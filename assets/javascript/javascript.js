@@ -1,11 +1,3 @@
-// Steps to complete:
-
-// 1. Initialize Firebase
-// 2. Create button for adding new employees - then update the html + update the database
-// 3. Create a way to retrieve employees from the employee database.
-// 4. Create a way to calculate the months worked. Using difference between start and current time.
-//    Then use moment.js formatting to set difference in months.
-// 5. Calculate Total billed
 
 // 1. Initialize Firebase
 var config = {
@@ -22,7 +14,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-// 2. Button for adding Employees
+// 2. Button for adding Trains
 $("#add-train-btn").on("click", function(event) {
   event.preventDefault();
 
@@ -32,13 +24,6 @@ $("#add-train-btn").on("click", function(event) {
   var tDestination = $("#destination-input").val().trim();
   var tTime = $("#first-time-input").val().trim();
   var tFrequency = $("#frequency-input").val().trim();
-  
-
-//   var empName = $("#employee-name-input").val().trim();
-//   var empRole = $("#role-input").val().trim();
-//   var empStart = moment($("#start-input").val().trim(), "MM/DD/YYYY").format("X");
-//   var empRate = $("#rate-input").val().trim();
-
 
   var newTrain = {
       name: tName,
@@ -86,8 +71,6 @@ database.ref().on("child_added", function(childSnapshot) {
     $("<td>").text(formatNextTrain),
     $("<td>").text(tMinutesTillTrain)
   );
-
-//   $("#train-table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" + tFrequency + " min</td><td>" + formatNextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
 
 //   // Append the new row to the table
   $("#train-table > tbody").append(newRow);
